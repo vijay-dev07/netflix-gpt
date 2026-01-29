@@ -3,14 +3,12 @@ import Header from "./Header";
 import { checkValidData } from "../utls/validate";
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utls/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utls/userSlice";
 
  const Login = () => {
   const [isSignInForm , setIsSignInForm] = useState(true);
   const [errorMessage , setErrorMessage] = useState(null);
-  const Navigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -34,13 +32,13 @@ import { addUser } from "../utls/userSlice";
       .then((userCredential) => {
         const user = userCredential.user;
         updateProfile(user, {
-          displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/222864264?v=4"
+          displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/222864264?v=4",
         }).then(() => {
           // Profile updated!
+          console.log("curntttttttttttttttttttttt",auth.currentUser);
            const {uid , email , displayName,photoURL} = auth.currentUser; 
            dispatch(
             addUser({uid:uid , email:email , displayName:displayName , photoURL:photoURL}));
-            Navigate("/browse");
         }).catch((error) => {
           setErrorMessage(error.message);
         });
@@ -58,9 +56,6 @@ import { addUser } from "../utls/userSlice";
       signInWithEmailAndPassword(auth, email.current.value , password.current.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        Navigate("/browse");
-        console.log(user);
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
