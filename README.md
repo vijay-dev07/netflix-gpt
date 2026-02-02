@@ -28,6 +28,12 @@
 - Update store with tarilor video data 
 - Embedded  the youtube video and make autoplay and mute 
 - Tailwind classes to make main container look awesome 
+- Build Secondary Component 
+- Build the movie list
+- Build movie card 
+- TMDB image url
+- Made the Browse page amazing with Tailwind css 
+- usePopular movies custom hooks 
 
 
 
