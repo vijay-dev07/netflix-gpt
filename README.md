@@ -34,6 +34,10 @@
 - TMDB image url
 - Made the Browse page amazing with Tailwind css 
 - usePopular movies custom hooks 
+- GPT search page
+- Gpt search bar
+- (Bonus) Multi-language Feature in our app 
+
 
 
 
